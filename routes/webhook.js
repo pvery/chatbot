@@ -1,9 +1,10 @@
 var express = require('express');
+var chatService = require('../server/chatService');
 var router = express.Router();
 
 /* GET hello world page. */
-router.get('/webhook', function(req, res, next) {
-  if (authenticate(req)){
+router.get('/', function(req, res, next) {
+  if (chatService.authenticate(req)){
     res.status(200).send(req.query['hub.challenge']);
   }
   else {
